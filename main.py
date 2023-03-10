@@ -1,6 +1,9 @@
 import smtplib
 import json
 
+with open("data.json", "r", encoding="utf8") as f:
+    src = json.load(f)
+
 
 def send_email(from_addr, to_addr, subject, text, encode="utf-8"):
     """
@@ -46,7 +49,3 @@ def send_email(from_addr, to_addr, subject, text, encode="utf-8"):
     subject = "Результаты тестов"
     text = "Привет", src["name"], "твой результат:", src["result"]
     send_email(from_addr, to_addr, subject, text)
-
-
-with open("data.json", "r", encoding="utf8") as f:
-    src = json.load(f)
